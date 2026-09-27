@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Checklist | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    .progress-area {
+      margin-bottom: 25px;
+    }
+
+    .progress-text {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #111827;
+      transition: width 0.3s ease;
+    }
+
+    .section-title {
+      margin-top: 25px;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eaecf0;
+    }
+
+    .check-item:last-child {
+      border-bottom: none;
+    }
+
+    .check-item input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .check-item label {
+      cursor: pointer;
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .check-item input:checked + label {
+      text-decoration: line-through;
+      color: #667085;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #667085;
+      margin-top: 18px;
+    }
+
+    .complete-message {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #166534;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Research Checklist</h1>
+
+    <p class="intro">
+      Use this checklist to review the main stages of your research project.
+    </p>
+
+    <div class="box">
+
+      <div class="progress-area">
+
+        <div class="progress-text" id="progressText">
+          Progress: 0%
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+      </div>
+
+
+      <h2 class="section-title">1. Research Planning</h2>
+
+      <div class="check-item">
+        <input type="checkbox" id="item1" onchange="updateProgress()">
+        <label for="item1">
+          I have clearly defined my research topic.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item2" onchange="updateProgress()">
+        <label for="item2">
+          I have identified the research problem.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item3" onchange="updateProgress()">
+        <label for="item3">
+          I have developed clear research questions or objectives.
+        </label>
+      </div>
+
+
+      <h2 class="section-title">2. Literature Review</h2>
+
+      <div class="check-item">
+        <input type="checkbox" id="item4" onchange="updateProgress()">
+        <label for="item4">
+          I have searched for relevant academic literature.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item5" onchange="updateProgress()">
+        <label for="item5">
+          I have recorded important findings from previous studies.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item6" onchange="updateProgress()">
+        <label for="item6">
+          I have identified limitations or areas that need further investigation.
+        </label>
+      </div>
+
+
+      <h2 class="section-title">3. Research Design</h2>
+
+      <div class="check-item">
+        <input type="checkbox" id="item7" onchange="updateProgress()">
+        <label for="item7">
+          I have selected a research approach that fits my research questions.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item8" onchange="updateProgress()">
+        <label for="item8">
+          I have identified my data sources or participants.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item9" onchange="updateProgress()">
+        <label for="item9">
+          I have considered ethical requirements and research limitations.
+        </label>
+      </div>
+
+
+      <h2 class="section-title">4. Research Writing</h2>
+
+      <div class="check-item">
+        <input type="checkbox" id="item10" onchange="updateProgress()">
+        <label for="item10">
+          My introduction clearly explains the research problem.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item11" onchange="updateProgress()">
+        <label for="item11">
+          My arguments are supported by appropriate sources.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item12" onchange="updateProgress()">
+        <label for="item12">
+          I have organized the paper using a clear structure.
+        </label>
+      </div>
+
+
+      <h2 class="section-title">5. Final Review</h2>
+
+      <div class="check-item">
+        <input type="checkbox" id="item13" onchange="updateProgress()">
+        <label for="item13">
+          I have checked my citations and references.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item14" onchange="updateProgress()">
+        <label for="item14">
+          I have checked grammar, formatting, and consistency.
+        </label>
+      </div>
+
+      <div class="check-item">
+        <input type="checkbox" id="item15" onchange="updateProgress()">
+        <label for="item15">
+          I have reviewed the final paper before submission.
+        </label>
+      </div>
+
+
+      <div class="complete-message" id="completeMessage">
+        Your research checklist is complete.
+      </div>
+
+      <button onclick="resetChecklist()">
+        Reset Checklist
+      </button>
+
+      <p class="note">
+        This checklist is a general research-planning guide. Different
+        research projects may require additional steps depending on their
+        discipline, methodology, institution, and ethical requirements.
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    function updateProgress() {
+
+      const totalItems = 15;
+
+      let completedItems = 0;
+
+      for (let i = 1; i <= totalItems; i++) {
+
+        const checkbox =
+          document.getElementById("item" + i);
+
+        if (checkbox.checked) {
+          completedItems++;
+        }
+
+      }
+
+      const percentage =
+        Math.round((completedItems / totalItems) * 100);
+
+      document.getElementById("progressText").textContent =
+        "Progress: " + percentage + "%";
+
+      document.getElementById("progressFill").style.width =
+        percentage + "%";
+
+      if (percentage === 100) {
+
+        document.getElementById("completeMessage").style.display =
+          "block";
+
+      } else {
+
+        document.getElementById("completeMessage").style.display =
+          "none";
+
+      }
+
+    }
+
+
+    function resetChecklist() {
+
+      for (let i = 1; i <= 15; i++) {
+
+        document.getElementById("item" + i).checked = false;
+
+      }
+
+      updateProgress();
+
+    }
+
+  </script>
+
+</body>
+</html>
