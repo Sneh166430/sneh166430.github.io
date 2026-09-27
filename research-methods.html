@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Methods Guide | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .method-card {
+      background: #f6f7fb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .method-card h3 {
+      color: #111827;
+      margin-bottom: 7px;
+    }
+
+    .method-card p {
+      color: #344054;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #667085;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Research Methods Guide</h1>
+
+    <p class="intro">
+      Understand common research methods and think about which approach may
+      fit your research question.
+    </p>
+
+    <div class="box">
+
+      <label for="topic">Research Topic</label>
+      <input
+        type="text"
+        id="topic"
+        placeholder="Example: Sustainable fashion in India"
+      >
+
+      <label for="questionType">What do you mainly want to study?</label>
+
+      <select id="questionType">
+        <option value="experiences">
+          Experiences, perceptions, or opinions
+        </option>
+
+        <option value="measurement">
+          Numbers, patterns, or relationships
+        </option>
+
+        <option value="both">
+          Both detailed experiences and numerical patterns
+        </option>
+
+        <option value="existing">
+          Existing research, reports, and documented data
+        </option>
+      </select>
+
+      <button onclick="showMethod()">Explore Suitable Methods</button>
+
+    </div>
+
+    <div class="box" id="result">
+
+      <h2>Research Method Guide</h2>
+
+      <div class="method-card">
+        <h3>1. Your Research Topic</h3>
+        <p id="topicResult"></p>
+      </div>
+
+      <div class="method-card">
+        <h3>2. Possible Approach</h3>
+        <p id="methodResult"></p>
+      </div>
+
+      <div class="method-card">
+        <h3>3. Why This Approach May Fit</h3>
+        <p id="reasonResult"></p>
+      </div>
+
+      <div class="method-card">
+        <h3>4. Common Data Sources</h3>
+        <p id="dataResult"></p>
+      </div>
+
+      <div class="method-card">
+        <h3>5. Important Consideration</h3>
+        <p id="noteResult"></p>
+      </div>
+
+      <p class="note">
+        The tool provides general guidance. The final research method should
+        be selected according to your research questions, objectives, data,
+        resources, and ethical requirements.
+      </p>
+
+    </div>
+
+  </main>
+
+  <script>
+
+    function showMethod() {
+
+      const topic = document.getElementById("topic").value.trim();
+      const questionType = document.getElementById("questionType").value;
+
+      if (!topic) {
+        alert("Please enter your research topic.");
+        return;
+      }
+
+      let method = "";
+      let reason = "";
+      let data = "";
+      let note = "";
+
+      if (questionType === "experiences") {
+
+        method = "Qualitative research";
+
+        reason =
+          "This approach can help explore experiences, perceptions, meanings, motivations, or processes in depth.";
+
+        data =
+          "Interviews, focus groups, observations, documents, or open-ended responses.";
+
+        note =
+          "Clearly define the participants or sources and explain how the qualitative data will be analyzed.";
+
+      }
+
+      if (questionType === "measurement") {
+
+        method = "Quantitative research";
+
+        reason =
+          "This approach can help measure variables, identify patterns, and examine relationships using numerical data.";
+
+        data =
+          "Surveys, structured datasets, official statistics, databases, or other numerical records.";
+
+        note =
+          "Define the variables, population, sample, and measurement approach before collecting data.";
+
+      }
+
+      if (questionType === "both") {
+
+        method = "Mixed-method research";
+
+        reason =
+          "This approach combines qualitative and quantitative evidence when both numerical patterns and detailed explanations are important.";
+
+        data =
+          "Surveys or datasets together with interviews, focus groups, observations, or documents.";
+
+        note =
+          "Plan how the qualitative and quantitative parts will complement each other rather than treating them as unrelated studies.";
+
+      }
+
+      if (questionType === "existing") {
+
+        method = "Secondary-data research";
+
+        reason =
+          "This approach uses information that has already been collected or published by researchers, institutions, governments, or organizations.";
+
+        data =
+          "Academic papers, books, government reports, industry reports, databases, official statistics, and other documented sources.";
+
+        note =
+          "Check the credibility, date, relevance, methodology, and limitations of each source.";
+
+      }
+
+      document.getElementById("topicResult").textContent = topic;
+      document.getElementById("methodResult").textContent = method;
+      document.getElementById("reasonResult").textContent = reason;
+      document.getElementById("dataResult").textContent = data;
+      document.getElementById("noteResult").textContent = note;
+
+      document.getElementById("result").style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
