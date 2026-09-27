@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Research Toolkit | Simple Research Tools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 15px;
+      color: #111827;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #667085;
+      font-size: 18px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 24px;
+      background: #111827;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .hero-button:hover {
+      background: #333;
+    }
+
+    .section {
+      padding: 60px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #667085;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .tool-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .tool-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .tool-card h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .tool-card p {
+      color: #667085;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .tool-card a {
+      display: inline-block;
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .about {
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 750px;
+      margin: auto;
+      color: #667085;
+    }
+
+    footer {
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Research Toolkit</div>
+
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Research Toolkit</h1>
+
+    <p>
+      Simple and practical tools to help students and beginner researchers
+      plan, organize, and improve their research work.
+    </p>
+
+    <a href="#tools" class="hero-button">Explore Tools</a>
+  </section>
+
+  <section class="section" id="tools">
+
+    <div class="section-title">
+      <h2>Research Tools</h2>
+      <p>Choose a tool to start organizing your research.</p>
+    </div>
+
+    <div class="tools">
+
+      <div class="tool-card">
+        <div class="tool-icon">📝</div>
+        <h3>Research Proposal</h3>
+        <p>
+          Organize your research topic, problem, objectives,
+          questions, and proposed methodology.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔎</div>
+        <h3>Research Questions</h3>
+        <p>
+          Turn a broad research topic into clear and focused
+          research questions.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📚</div>
+        <h3>Literature Review</h3>
+        <p>
+          Organize papers, authors, methods, findings,
+          limitations, and research gaps.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔬</div>
+        <h3>Research Methods</h3>
+        <p>
+          Understand basic research approaches, methods,
+          data sources, and study designs.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">💡</div>
+        <h3>Research Gap</h3>
+        <p>
+          Identify possible gaps by comparing existing
+          studies, limitations, contexts, and unanswered questions.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📑</div>
+        <h3>Citation & References</h3>
+        <p>
+          Learn how to organize and check references
+          for your academic work.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">✅</div>
+        <h3>Research Checklist</h3>
+        <p>
+          Use a simple checklist to track important steps
+          before submitting your research.
+        </p>
+        <a href="#">Open Tool →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📥</div>
+        <h3>Templates</h3>
+        <p>
+          Access useful research templates and planning
+          resources.
+        </p>
+        <a href="#">View Templates →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+
+    <div class="section-title">
+      <h2>About Research Toolkit</h2>
+    </div>
+
+    <p>
+      Research Toolkit is an independent digital project designed
+      to make the research process easier to understand and organize.
+      It focuses on practical research planning, academic organization,
+      and beginner-friendly resources.
+    </p>
+
+  </section>
+
+  <footer>
+    © 2026 Research Toolkit · Independent Research Resource
+  </footer>
+
+</body>
+</html>
