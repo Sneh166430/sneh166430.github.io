@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Templates | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .template-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 18px;
+    }
+
+    .template-card h2 {
+      color: #111827;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .template-card p {
+      color: #667085;
+      margin-bottom: 15px;
+    }
+
+    .template-content {
+      background: #f6f7fb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      white-space: pre-line;
+      color: #344054;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .note {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      margin-top: 25px;
+      color: #667085;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Research Templates</h1>
+
+    <p class="intro">
+      Simple templates to help you organize different stages of a research project.
+    </p>
+
+
+    <div class="template-card">
+
+      <h2>Research Proposal Template</h2>
+
+      <p>
+        Use this structure to organize the main parts of a research proposal.
+      </p>
+
+      <div class="template-content">Research Topic:
+
+Research Problem:
+
+Research Questions:
+
+Research Objectives:
+
+Literature Review:
+
+Research Gap:
+
+Research Method:
+
+Data Sources:
+
+Expected Contribution:
+
+Research Limitations:</div>
+
+      <button onclick="copyTemplate('proposal')">
+        Copy Template
+      </button>
+
+    </div>
+
+
+    <div class="template-card">
+
+      <h2>Literature Review Matrix</h2>
+
+      <p>
+        Use this template to compare studies and organize important findings.
+      </p>
+
+      <div class="template-content">Paper / Study Title:
+
+Author & Year:
+
+Research Method:
+
+Research Context:
+
+Key Finding:
+
+Research Limitation:
+
+Potential Research Gap:
+
+Relevance to My Research:</div>
+
+      <button onclick="copyTemplate('literature')">
+        Copy Template
+      </button>
+
+    </div>
+
+
+    <div class="template-card">
+
+      <h2>Research Planning Template</h2>
+
+      <p>
+        Use this template when developing a new research idea.
+      </p>
+
+      <div class="template-content">Research Topic:
+
+Research Problem:
+
+Main Research Question:
+
+Research Objectives:
+
+Target Population / Context:
+
+Possible Research Method:
+
+Possible Data Sources:
+
+Expected Outcome:
+
+Potential Contribution:</div>
+
+      <button onclick="copyTemplate('planning')">
+        Copy Template
+      </button>
+
+    </div>
+
+
+    <div class="template-card">
+
+      <h2>Research Gap Worksheet</h2>
+
+      <p>
+        Use this worksheet to organize observations from previous research.
+      </p>
+
+      <div class="template-content">Research Topic:
+
+What has previous research studied?
+
+What methods have previous studies used?
+
+What limitations have I noticed?
+
+What areas appear under-explored?
+
+What evidence supports the potential gap?
+
+How could my research address this area?</div>
+
+      <button onclick="copyTemplate('gap')">
+        Copy Template
+      </button>
+
+    </div>
+
+
+    <div class="template-card">
+
+      <h2>Research Paper Outline</h2>
+
+      <p>
+        Use this basic structure to organize a research paper.
+      </p>
+
+      <div class="template-content">1. Introduction
+
+2. Literature Review
+
+3. Research Method
+
+4. Results / Findings
+
+5. Discussion
+
+6. Conclusion
+
+7. References</div>
+
+      <button onclick="copyTemplate('outline')">
+        Copy Template
+      </button>
+
+    </div>
+
+
+    <div class="note">
+      These templates are general educational resources. Adapt them to the
+      requirements of your university, discipline, journal, supervisor, or
+      research project.
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const templates = {
+
+      proposal:
+`Research Topic:
+
+Research Problem:
+
+Research Questions:
+
+Research Objectives:
+
+Literature Review:
+
+Research Gap:
+
+Research Method:
+
+Data Sources:
+
+Expected Contribution:
+
+Research Limitations:`,
+
+      literature:
+`Paper / Study Title:
+
+Author & Year:
+
+Research Method:
+
+Research Context:
+
+Key Finding:
+
+Research Limitation:
+
+Potential Research Gap:
+
+Relevance to My Research:`,
+
+      planning:
+`Research Topic:
+
+Research Problem:
+
+Main Research Question:
+
+Research Objectives:
+
+Target Population / Context:
+
+Possible Research Method:
+
+Possible Data Sources:
+
+Expected Outcome:
+
+Potential Contribution:`,
+
+      gap:
+`Research Topic:
+
+What has previous research studied?
+
+What methods have previous studies used?
+
+What limitations have I noticed?
+
+What areas appear under-explored?
+
+What evidence supports the potential gap?
+
+How could my research address this area?`,
+
+      outline:
+`1. Introduction
+
+2. Literature Review
+
+3. Research Method
+
+4. Results / Findings
+
+5. Discussion
+
+6. Conclusion
+
+7. References`
+
+    };
+
+
+    function copyTemplate(type) {
+
+      navigator.clipboard.writeText(templates[type])
+        .then(function() {
+
+          alert("Template copied successfully.");
+
+        })
+        .catch(function() {
+
+          alert("Unable to copy automatically. Please select and copy the template manually.");
+
+        });
+
+    }
+
+  </script>
+
+</body>
+</html>
