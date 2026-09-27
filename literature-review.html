@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Literature Review Matrix | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 18px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .secondary {
+      background: #667085;
+    }
+
+    .matrix-wrapper {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 850px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #d0d5dd;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f4f7;
+      font-size: 14px;
+    }
+
+    td {
+      background: white;
+      min-height: 60px;
+    }
+
+    .small-note {
+      color: #667085;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .tip {
+      background: #f6f7fb;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Literature Review Matrix</h1>
+
+    <p class="intro">
+      Organize and compare research papers to identify themes, findings,
+      methods, and research gaps.
+    </p>
+
+    <div class="box">
+
+      <label for="title">Paper / Study Title</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Example: Sustainable Fashion Consumption in India"
+      >
+
+      <label for="author">Author & Year</label>
+      <input
+        type="text"
+        id="author"
+        placeholder="Example: Sharma (2025)"
+      >
+
+      <label for="method">Research Method</label>
+      <input
+        type="text"
+        id="method"
+        placeholder="Example: Survey / Case Study / Secondary Research"
+      >
+
+      <label for="finding">Key Finding</label>
+      <textarea
+        id="finding"
+        placeholder="Write the main finding of the study..."
+      ></textarea>
+
+      <label for="gap">Research Gap / Limitation</label>
+      <textarea
+        id="gap"
+        placeholder="What limitation or unanswered question did the study identify?"
+      ></textarea>
+
+      <button onclick="addStudy()">Add Study to Matrix</button>
+      <button class="secondary" onclick="clearMatrix()">Clear Matrix</button>
+
+      <p class="small-note">
+        Add one study at a time. Your literature matrix will grow as you add papers.
+      </p>
+
+    </div>
+
+    <div class="box">
+
+      <h2>Your Literature Matrix</h2>
+
+      <div class="matrix-wrapper">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Paper / Study</th>
+              <th>Author & Year</th>
+              <th>Method</th>
+              <th>Key Finding</th>
+              <th>Research Gap / Limitation</th>
+            </tr>
+          </thead>
+
+          <tbody id="matrixBody">
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="tip">
+        <strong>Tip:</strong> After adding several papers, compare their
+        methods, findings, and gaps. Repeated limitations or unanswered
+        questions can help you identify a potential research gap.
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+
+    function addStudy() {
+
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const method = document.getElementById("method").value.trim();
+      const finding = document.getElementById("finding").value.trim();
+      const gap = document.getElementById("gap").value.trim();
+
+      if (!title) {
+        alert("Please enter the paper or study title.");
+        return;
+      }
+
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${escapeHTML(title)}</td>
+        <td>${escapeHTML(author)}</td>
+        <td>${escapeHTML(method)}</td>
+        <td>${escapeHTML(finding)}</td>
+        <td>${escapeHTML(gap)}</td>
+      `;
+
+      document.getElementById("matrixBody").appendChild(row);
+
+      document.getElementById("title").value = "";
+      document.getElementById("author").value = "";
+      document.getElementById("method").value = "";
+      document.getElementById("finding").value = "";
+      document.getElementById("gap").value = "";
+    }
+
+    function clearMatrix() {
+
+      const body = document.getElementById("matrixBody");
+
+      if (body.children.length === 0) {
+        alert("The matrix is already empty.");
+        return;
+      }
+
+      if (confirm("Are you sure you want to clear the entire matrix?")) {
+        body.innerHTML = "";
+      }
+    }
+
+    function escapeHTML(text) {
+
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+
+    }
+
+  </script>
+
+</body>
+</html>
