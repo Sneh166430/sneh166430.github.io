@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Question Builder | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 35px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .question {
+      background: #f6f7fb;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #667085;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Research Question Builder</h1>
+
+    <p class="intro">
+      Turn a broad research topic into clearer and more focused research questions.
+    </p>
+
+    <div class="box">
+
+      <label for="topic">Research Topic</label>
+      <input
+        type="text"
+        id="topic"
+        placeholder="Example: Sustainable fashion in India"
+      >
+
+      <label for="focus">What is your main focus?</label>
+      <select id="focus">
+        <option value="impact">Impact or effects</option>
+        <option value="factors">Factors or causes</option>
+        <option value="challenges">Challenges or barriers</option>
+        <option value="opportunities">Opportunities or potential</option>
+        <option value="comparison">Comparison</option>
+      </select>
+
+      <label for="context">Context / Target Group</label>
+      <input
+        type="text"
+        id="context"
+        placeholder="Example: Indian consumers"
+      >
+
+      <button onclick="buildQuestions()">Build Research Questions</button>
+
+    </div>
+
+    <div class="box" id="result">
+
+      <h2>Suggested Research Questions</h2>
+
+      <div class="question" id="q1"></div>
+      <div class="question" id="q2"></div>
+      <div class="question" id="q3"></div>
+
+      <p class="note">
+        These are starting points. Refine the questions according to your
+        research objectives, literature, methodology, and available data.
+      </p>
+
+    </div>
+
+  </main>
+
+  <script>
+    function buildQuestions() {
+
+      const topic = document.getElementById("topic").value.trim();
+      const focus = document.getElementById("focus").value;
+      const context = document.getElementById("context").value.trim();
+
+      if (!topic) {
+        alert("Please enter your research topic.");
+        return;
+      }
+
+      const target = context || "the selected context";
+
+      let questions = [];
+
+      if (focus === "impact") {
+        questions = [
+          `What impact does ${topic} have on ${target}?`,
+          `Which factors influence the effects of ${topic} on ${target}?`,
+          `What challenges affect the outcomes of ${topic} for ${target}?`
+        ];
+      }
+
+      if (focus === "factors") {
+        questions = [
+          `What are the main factors influencing ${topic} among ${target}?`,
+          `How do these factors affect ${topic} in ${target}?`,
+          `Which factors appear to have the strongest influence and why?`
+        ];
+      }
+
+      if (focus === "challenges") {
+        questions = [
+          `What are the major challenges associated with ${topic} for ${target}?`,
+          `What factors contribute to these challenges?`,
+          `How can the identified challenges be addressed or reduced?`
+        ];
+      }
+
+      if (focus === "opportunities") {
+        questions = [
+          `What opportunities does ${topic} create for ${target}?`,
+          `What factors may influence the success of these opportunities?`,
+          `What barriers could limit the potential of ${topic}?`
+        ];
+      }
+
+      if (focus === "comparison") {
+        questions = [
+          `How does ${topic} differ across the selected groups or contexts?`,
+          `What factors explain the differences observed in ${topic}?`,
+          `What similarities and differences are most relevant for further research?`
+        ];
+      }
+
+      document.getElementById("q1").textContent = questions[0];
+      document.getElementById("q2").textContent = questions[1];
+      document.getElementById("q3").textContent = questions[2];
+
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
