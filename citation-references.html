@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citation & References Tool | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .reference-card {
+      background: #f6f7fb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .reference-card h3 {
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .reference-text {
+      color: #344054;
+      word-break: break-word;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #667085;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Citation & References Tool</h1>
+
+    <p class="intro">
+      Create a basic APA 7 reference from common academic and online sources.
+    </p>
+
+    <div class="box">
+
+      <label for="sourceType">Source Type</label>
+
+      <select id="sourceType" onchange="updateFields()">
+        <option value="journal">Journal Article</option>
+        <option value="book">Book</option>
+        <option value="website">Website</option>
+      </select>
+
+      <label for="author">Author</label>
+      <input
+        type="text"
+        id="author"
+        placeholder="Example: Sharma, R."
+      >
+
+      <label for="year">Year</label>
+      <input
+        type="text"
+        id="year"
+        placeholder="Example: 2025"
+      >
+
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter the title"
+      >
+
+      <div id="journalFields">
+
+        <label for="journal">Journal Name</label>
+        <input
+          type="text"
+          id="journal"
+          placeholder="Example: Journal of Business Research"
+        >
+
+        <label for="volume">Volume</label>
+        <input
+          type="text"
+          id="volume"
+          placeholder="Example: 12"
+        >
+
+        <label for="issue">Issue</label>
+        <input
+          type="text"
+          id="issue"
+          placeholder="Example: 3"
+        >
+
+        <label for="pages">Pages</label>
+        <input
+          type="text"
+          id="pages"
+          placeholder="Example: 120–135"
+        >
+
+      </div>
+
+      <div id="publisherField" style="display: none;">
+
+        <label for="publisher">Publisher</label>
+        <input
+          type="text"
+          id="publisher"
+          placeholder="Example: Oxford University Press"
+        >
+
+      </div>
+
+      <div id="urlField">
+
+        <label for="url">URL or DOI</label>
+        <input
+          type="text"
+          id="url"
+          placeholder="https://doi.org/..."
+        >
+
+      </div>
+
+      <button onclick="generateReference()">
+        Generate APA Reference
+      </button>
+
+    </div>
+
+    <div class="box" id="result">
+
+      <h2>Reference Result</h2>
+
+      <div class="reference-card">
+
+        <h3>APA 7 Reference</h3>
+
+        <p class="reference-text" id="referenceResult"></p>
+
+      </div>
+
+      <p class="note">
+        This tool provides a basic reference format. Always verify the final
+        citation against the official APA 7 guidelines and the source details.
+      </p>
+
+    </div>
+
+  </main>
+
+  <script>
+
+    function updateFields() {
+
+      const sourceType =
+        document.getElementById("sourceType").value;
+
+      const journalFields =
+        document.getElementById("journalFields");
+
+      const publisherField =
+        document.getElementById("publisherField");
+
+      if (sourceType === "journal") {
+
+        journalFields.style.display = "block";
+        publisherField.style.display = "none";
+
+      }
+
+      if (sourceType === "book") {
+
+        journalFields.style.display = "none";
+        publisherField.style.display = "block";
+
+      }
+
+      if (sourceType === "website") {
+
+        journalFields.style.display = "none";
+        publisherField.style.display = "none";
+
+      }
+
+    }
+
+
+    function generateReference() {
+
+      const sourceType =
+        document.getElementById("sourceType").value;
+
+      const author =
+        document.getElementById("author").value.trim();
+
+      const year =
+        document.getElementById("year").value.trim();
+
+      const title =
+        document.getElementById("title").value.trim();
+
+      const journal =
+        document.getElementById("journal").value.trim();
+
+      const volume =
+        document.getElementById("volume").value.trim();
+
+      const issue =
+        document.getElementById("issue").value.trim();
+
+      const pages =
+        document.getElementById("pages").value.trim();
+
+      const publisher =
+        document.getElementById("publisher").value.trim();
+
+      const url =
+        document.getElementById("url").value.trim();
+
+      if (!author || !year || !title) {
+
+        alert("Please enter the author, year, and title.");
+
+        return;
+
+      }
+
+      let reference = "";
+
+      if (sourceType === "journal") {
+
+        if (!journal) {
+
+          alert("Please enter the journal name.");
+
+          return;
+
+        }
+
+        reference =
+          author + " (" + year + "). " +
+          title + ". " +
+          journal;
+
+        if (volume) {
+          reference += ", " + volume;
+        }
+
+        if (issue) {
+          reference += "(" + issue + ")";
+        }
+
+        if (pages) {
+          reference += ", " + pages;
+        }
+
+        reference += ".";
+
+        if (url) {
+          reference += " " + url;
+        }
+
+      }
+
+
+      if (sourceType === "book") {
+
+        if (!publisher) {
+
+          alert("Please enter the publisher.");
+
+          return;
+
+        }
+
+        reference =
+          author + " (" + year + "). " +
+          title + ". " +
+          publisher + ".";
+
+        if (url) {
+          reference += " " + url;
+        }
+
+      }
+
+
+      if (sourceType === "website") {
+
+        reference =
+          author + ". (" + year + "). " +
+          title + ". " +
+          url;
+
+      }
+
+
+      document.getElementById("referenceResult").textContent =
+        reference;
+
+      document.getElementById("result").style.display =
+        "block";
+
+    }
+
+  </script>
+
+</body>
+</html>
