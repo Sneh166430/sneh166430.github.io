@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Gap Tool | Research Toolkit</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    textarea,
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .gap-card {
+      background: #f6f7fb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .gap-card h3 {
+      color: #111827;
+      margin-bottom: 7px;
+    }
+
+    .gap-card p {
+      color: #344054;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #667085;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">← Back to Research Toolkit</a>
+  </header>
+
+  <main class="container">
+
+    <h1>Research Gap Tool</h1>
+
+    <p class="intro">
+      Organize what previous studies have covered and identify areas that may
+      need further investigation.
+    </p>
+
+    <div class="box">
+
+      <label for="topic">Research Topic</label>
+      <input
+        type="text"
+        id="topic"
+        placeholder="Example: Sustainable fashion in India"
+      >
+
+      <label for="known">What has previous research already studied?</label>
+      <textarea
+        id="known"
+        placeholder="Summarize the main topics, populations, methods, or findings covered in previous studies."
+      ></textarea>
+
+      <label for="limitation">What limitations have you noticed?</label>
+      <textarea
+        id="limitation"
+        placeholder="Example: Limited geographic coverage, small sample, limited industry focus, or lack of recent data."
+      ></textarea>
+
+      <label for="missing">What appears to be missing or under-explored?</label>
+      <textarea
+        id="missing"
+        placeholder="Describe the area, population, relationship, context, or question that previous research has not sufficiently addressed."
+      ></textarea>
+
+      <button onclick="buildGap()">Organize Potential Research Gap</button>
+
+    </div>
+
+    <div class="box" id="result">
+
+      <h2>Potential Research Gap</h2>
+
+      <div class="gap-card">
+        <h3>1. Research Topic</h3>
+        <p id="topicResult"></p>
+      </div>
+
+      <div class="gap-card">
+        <h3>2. Existing Research</h3>
+        <p id="knownResult"></p>
+      </div>
+
+      <div class="gap-card">
+        <h3>3. Identified Limitations</h3>
+        <p id="limitationResult"></p>
+      </div>
+
+      <div class="gap-card">
+        <h3>4. Potential Research Gap</h3>
+        <p id="missingResult"></p>
+      </div>
+
+      <div class="gap-card">
+        <h3>5. Gap Statement Draft</h3>
+        <p id="statementResult"></p>
+      </div>
+
+      <p class="note">
+        A potential gap should be verified through a systematic review of
+        relevant literature. A limitation in one study does not automatically
+        establish a research gap.
+      </p>
+
+    </div>
+
+  </main>
+
+  <script>
+
+    function buildGap() {
+
+      const topic = document.getElementById("topic").value.trim();
+      const known = document.getElementById("known").value.trim();
+      const limitation = document.getElementById("limitation").value.trim();
+      const missing = document.getElementById("missing").value.trim();
+
+      if (!topic) {
+        alert("Please enter your research topic.");
+        return;
+      }
+
+      document.getElementById("topicResult").textContent = topic;
+
+      document.getElementById("knownResult").textContent =
+        known || "Add a summary of what previous studies have already examined.";
+
+      document.getElementById("limitationResult").textContent =
+        limitation || "Add the limitations or boundaries you identified in previous studies.";
+
+      document.getElementById("missingResult").textContent =
+        missing || "Add the area that appears to be missing or under-explored.";
+
+      if (missing) {
+        document.getElementById("statementResult").textContent =
+          `Existing research on ${topic} has addressed several aspects of the topic; however, further research may be needed to examine ${missing}.`;
+      } else {
+        document.getElementById("statementResult").textContent =
+          `Further review of the literature on ${topic} is needed to identify a specific and evidence-based research gap.`;
+      }
+
+      document.getElementById("result").style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
